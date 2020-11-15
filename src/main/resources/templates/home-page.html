@@ -25,6 +25,7 @@
             }
             .all-airports {
                 max-width: 440px;
+                max-height: 80vh;
                 position: absolute;
                 top: 75px;
                 left: 50px;
@@ -33,12 +34,15 @@
                 background: white;
                 border-radius: 7px;
             }
+            .table-responsive {
+                max-height: 68vh;
+                max-width: 430px;
+            }
             td {
                 font-size: 12px;
                 text-transform:capitalize;
             }
             .table {
-                height: 100%;
                 background: white;
                 margin: 20px auto 0px;
             }
@@ -57,20 +61,22 @@
         <img class="img-airport" src = "../static/images/airport_brasov.jpg" th:src="@{images/airport_brasov.jpg}">
         <div class="all-airports">
             <h3>Romanian airports</h3>
-            <table class="table table-hover table-sm">
-                <thead>
-                    <th style="width: 300px;">Airport</th> <!-- heading for each column -->
-                    <th style="width: 100px;">City</th>
-                    <td style="width: 20px;">Link</td>
-                </thead>
-                <tbody>
-                    <tr th:each="a : ${myAirports}"> <!-- table row -->
-                        <td style="width: 300px;" th:text="${a.name}"></td> <!-- table data -->
-                        <td style="width: 100px;" th:text="${a.city}"></td>
-                        <td style="width: 20px;"><a th:href="@{/airport/} + ${a.id}" th:text="Details">Link</a></td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table class="table table-hover table-sm">
+                    <thead>
+                        <th style="width: 300px;">Airport</th> <!-- heading for each column -->
+                        <th style="width: 100px;">City</th>
+                        <td style="width: 20px;">Link</td>
+                    </thead>
+                    <tbody>
+                        <tr th:each="a : ${myAirports}"> <!-- table row -->
+                            <td style="width: 300px;" th:text="${a.name}"></td> <!-- table data -->
+                            <td style="width: 100px;" th:text="${a.city}"></td>
+                            <td style="width: 20px;"><a th:href="@{/airport/} + ${a.id}" th:text="Details">Link</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
         <div th:replace="fragments/footer :: footer"></div>
     </body>

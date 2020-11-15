@@ -38,15 +38,22 @@
                 max-height: 500px;
                 width: 100%;
             }
+            .show-airport {
+                overflow: auto;
+                max-height: 85vh;
+            }
         </style>
     </head>
     <body>
         <div th:replace="fragments/header :: header"></div>
         <div class="container airport-content">
-            <h3>Airport details</h3>
-            <p style="text-transform:capitalize;" th:text="${airport}"></p>
-            <p th:text="${details}"></p>
-            <iframe th:src = "${maps}"></iframe>
+            <div class="show-airport">
+                <h3 style="margin-top: 25px;">Airport details</h3>
+                <p style="text-transform:capitalize;" th:text="${airport}"></p>
+                <p th:text="${details}"></p>
+                <iframe th:src = "${maps}"></iframe>
+                <a class="btn btn-primary" th:href="@{/index}">Back to Home</a>
+            </div>
         </div>
         <div th:replace="fragments/footer :: footer"></div>
     </body>
