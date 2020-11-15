@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <style>
+            .footer {
+                margin: 0px auto;
+                width: 100%;
+                background-color: #1A2732;
+                color: white;
+                text-align: center;
+                height: 5vh;
+                font-size: 1.5vh;
+                padding: 1.4vh;
+            }
+            .navbar-custom {
+                background-color: #1A2732 !important;
+                height: 5vh;
+            }
+            .airport-content {
+                overflow: hidden;
+                position: relative;
+                height: 90vh;
+                width: 100%;
+                object-fit: cover;
+                object-position: 0 0;
+            }
+            iframe {
+                margin: 25px auto;
+                text-align: center;
+                height: 350px;
+                max-height: 500px;
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <div th:replace="fragments/header :: header"></div>
+        <div class="container airport-content">
+            <h3>Airport details</h3>
+            <p style="text-transform:capitalize;" th:text="${airport}"></p>
+            <p th:text="${details}"></p>
+            <iframe th:src = "${maps}"></iframe>
+        </div>
+        <div th:replace="fragments/footer :: footer"></div>
+    </body>
+</html>

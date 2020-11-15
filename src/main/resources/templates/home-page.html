@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <style>
+            .footer {
+                margin: 0px auto;
+                width: 100%;
+                background-color: #1A2732;
+                color: white;
+                text-align: center;
+                height: 5vh;
+                font-size: 1.5vh;
+                padding: 1.4vh;
+            }
+            .navbar-custom {
+                background-color: #1A2732 !important;
+                height: 5vh;
+            }
+            .all-airports {
+                max-width: 440px;
+                position: absolute;
+                top: 75px;
+                left: 50px;
+                opacity: 0.7;
+                padding: 20px;
+                background: white;
+                border-radius: 7px;
+            }
+            td {
+                font-size: 12px;
+                text-transform:capitalize;
+            }
+            .table {
+                height: 100%;
+                background: white;
+                margin: 20px auto 0px;
+            }
+            .img-airport {
+                overflow: hidden;
+                position: relative;
+                height: 90vh;
+                width: 100%;
+                object-fit: cover;
+                object-position: 0 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div th:replace="fragments/header :: header"></div>
+        <img class="img-airport" src = "../static/images/airport_brasov.jpg" th:src="@{images/airport_brasov.jpg}">
+        <div class="all-airports">
+            <h3>Romanian airports</h3>
+            <table class="table table-hover table-sm">
+                <thead>
+                    <th style="width: 300px;">Airport</th> <!-- heading for each column -->
+                    <th style="width: 100px;">City</th>
+                    <td style="width: 20px;">Link</td>
+                </thead>
+                <tbody>
+                    <tr th:each="a : ${myAirports}"> <!-- table row -->
+                        <td style="width: 300px;" th:text="${a.name}"></td> <!-- table data -->
+                        <td style="width: 100px;" th:text="${a.city}"></td>
+                        <td style="width: 20px;"><a th:href="@{/airport/} + ${a.id}" th:text="Details">Link</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div th:replace="fragments/footer :: footer"></div>
+    </body>
+</html>
+
