@@ -7,8 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import ro.siit.airports.domain.Airport;
 import ro.siit.airports.repository.AirportRepository;
 
-import java.util.Collections;
-import java.util.Comparator;
+
 import java.util.List;
 
 @Controller

@@ -15,21 +15,15 @@
                 background-color: #1A2732;
                 color: white;
                 text-align: center;
-                height: 5vh;
                 font-size: 1.5vh;
                 padding: 1.4vh;
             }
             .navbar-custom {
                 background-color: #1A2732 !important;
-                height: 5vh;
             }
             .airport-content {
-                overflow: hidden;
-                position: relative;
-                height: 90vh;
                 width: 100%;
-                object-fit: cover;
-                object-position: 0 0;
+                padding: 15px;
             }
             iframe {
                 margin: 25px auto;
@@ -39,8 +33,14 @@
                 width: 100%;
             }
             .show-airport {
-                overflow: auto;
-                max-height: 85vh;
+                border: 1px solid #cccccc;
+                box-shadow: 0 0 3px #cccccc;
+                padding: 25px 35px;
+            }
+            table {
+                border: 1px solid #cccccc;
+                box-shadow: 0 0 3px #cccccc;
+                padding: 25px 35px;
             }
         </style>
     </head>
@@ -52,6 +52,52 @@
                 <p style="text-transform:capitalize;" th:text="${airport}"></p>
                 <p th:text="${details}"></p>
                 <iframe th:src = "${maps}"></iframe>
+            <div>
+                <h3 style="margin-top: 25px;">Departures</h3>
+            </div>
+                <table class="table table-hover table-sm">
+                    <thead>
+                        <th style="width: 100px;">Departure Airport</th> <!-- heading for each column -->
+                        <th style="width: 70px;">Departure Time</th>
+                        <th style="width: 100px;">Arrival Airport</th>
+                        <th style="width: 70px;">Arrival Time</th>
+                        <th style="width: 40px;">Flight No</th>
+                        <th style="width: 40px;">Airline</th>
+                    </thead>
+                    <tbody>
+                        <tr th:each="a : ${departureFlights}"> <!-- table row -->
+                            <td style="width: 100px;" th:text="${a.departureAirport.getName()}"></td>
+                            <td style="width: 70px;" th:text="${a.departure}"></td><!-- table data -->
+                            <td style="width: 100px;" th:text="${a.arrivalAirport.getName()}"></td>
+                            <td style="width: 70px;" th:text="${a.arrival}"></td>
+                            <td style="width: 40px;" th:text="${a.flightNo}"></td>
+                            <td style="width: 40px;" th:text="${a.airline.getName()}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div>
+                    <h3 style="margin-top: 25px;">Arrivals</h3>
+                </div>
+                <table class="table table-hover table-sm">
+                    <thead>
+                    <th style="width: 100px;">Arrival Airport</th>
+                    <th style="width: 70px;">Arrival Time</th>
+                    <th style="width: 100px;">Departure Airport</th> <!-- heading for each column -->
+                    <th style="width: 70px;">Departure Time</th>
+                    <th style="width: 40px;">Flight No</th>
+                    <th style="width: 40px;">Airline</th>
+                    </thead>
+                    <tbody>
+                    <tr th:each="a : ${arrivalFlights}"> <!-- table row -->
+                        <td style="width: 100px;" th:text="${a.arrivalAirport.getName()}"></td>
+                        <td style="width: 70px;" th:text="${a.arrival}"></td>
+                        <td style="width: 100px;" th:text="${a.departureAirport.getName()}"></td>
+                        <td style="width: 70px;" th:text="${a.departure}"></td><!-- table data -->
+                        <td style="width: 40px;" th:text="${a.flightNo}"></td>
+                        <td style="width: 40px;" th:text="${a.airline.getName()}"></td>
+                    </tr>
+                    </tbody>
+                </table>
                 <a class="btn btn-primary" th:href="@{/index}">Back to Home</a>
             </div>
         </div>

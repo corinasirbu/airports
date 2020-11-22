@@ -7,4 +7,5 @@ import ro.siit.airports.domain.Airlines;
 
 @Repository
 public interface AirlinesRepository extends JpaRepository<Airlines, Long> {
+
 }

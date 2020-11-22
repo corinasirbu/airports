@@ -3,6 +3,7 @@ package ro.siit.airports.service.implementation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ro.siit.airports.domain.Airport;
+import ro.siit.airports.domain.Flight;
 import ro.siit.airports.model.Search;
 import ro.siit.airports.repository.AirportRepository;
 import ro.siit.airports.service.AirportService;
@@ -28,4 +29,5 @@ public class AirportServiceImpl implements AirportService {
         }
         return list;
     }
+
 }
